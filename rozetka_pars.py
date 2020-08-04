@@ -34,51 +34,44 @@ def content(html):
     info = soup.find('div', class_='channel-header-view-desktop__logo-line')
     info1 = soup.find_all('li', class_='social-links-view__button')
     for inform in info1:
-        vk = inform.find('span', class_='zen-ui-button__content-wrapper')
-        inst = inform.find('span', class_='zen-ui-button__content-wrapper')
-        youtube = inform.find('span', class_='zen-ui-button__content-wrapper')
-        facebook = inform.find('span', class_='zen-ui-button__content-wrapper')
-        twitter = inform.find('span', class_='zen-ui-button__content-wrapper')
-        ok = inform.find('span', class_='zen-ui-button__content-wrapper')
-        telegram = inform.find('span', class_='zen-ui-button__content-wrapper')
-        if youtube.text == 'Youtube':
+        if inform.find('span', class_='zen-ui-button__content-wrapper').text == 'Youtube':
             youtube = inform.find('a').get('href')
         else:
             youtube = '-'
-        if facebook.text == 'Facebook':
+        if inform.find('span', class_='zen-ui-button__content-wrapper').text == 'Facebook':
             facebook = inform.find('a').get('href')
         else:
             facebook = '-'
-        if twitter.text == 'Twitter':
+        if inform.find('span', class_='zen-ui-button__content-wrapper').text == 'Twitter':
             twitter = inform.find('a').get('href')
         else:
             twitter = '-'
-        if ok.text == 'OK':
+        if inform.find('span', class_='zen-ui-button__content-wrapper').text == 'OK':
             ok = inform.find('a').get('href')
         else:
             ok = '-'
-        if telegram.text == 'Telegram':
+        if inform.find('span', class_='zen-ui-button__content-wrapper').text == 'Telegram':
             telegram = inform.find('a').get('href')
         else:
             telegram = '-'
-        if vk.text == 'VK':
+        if inform.find('span', class_='zen-ui-button__content-wrapper').text == 'VK':
             vk = inform.find('a').get('href')
         else:
             vk = '-'
-        if inst.text == "Instagram":
+        if inform.find('span', class_='zen-ui-button__content-wrapper').text == "Instagram":
             inst = inform.find('a').get('href')
         else:
             inst = '-'
         contents.append({
-            "vk": vk,
-            "inst": inst,
-            'youtube': youtube,
-            'facebook': facebook,
-            'twitter': twitter,
-            'ok': ok,
-            'telegram': telegram,
-            "name": info.find('span', class_='source-page-title-view__text _platform_desktop').text
-        })
+        "vk": vk,
+        "inst": inst,
+        'youtube': youtube,
+        'facebook': facebook,
+        'twitter': twitter,
+        'ok': ok,
+        'telegram': telegram,
+        "name": info.find('span', class_='source-page-title-view__text _platform_desktop').text
+    })
     return contents
 
 # Делаем парсер многостраничным и объеденяем функционал функций выше
